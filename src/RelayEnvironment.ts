@@ -32,7 +32,7 @@ const fetchFn: FetchFunction = async (request, variables) => {
         }
       );
   }
-  console.log(keycloak);
+
   if (keycloak.token) {
     const resp = await fetch(HTTP_ENDPOINT, {
       method: "POST",
