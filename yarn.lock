@@ -2376,7 +2376,7 @@ word-wrap@^1.2.5:
 
 "workflows-lib@https://gitpkg.vercel.app/DiamondLightSource/workflows/frontend/workflows-lib?main":
   version "0.0.0"
-  resolved "https://gitpkg.vercel.app/DiamondLightSource/workflows/frontend/workflows-lib?main#3362bd6249a069bde51c2851a1bcc466398dfe2c"
+  resolved "https://gitpkg.vercel.app/DiamondLightSource/workflows/frontend/workflows-lib?main#042497d0a0890cc9b54cba415da6c6f5f3a5cbdf"
 
 yallist@^3.0.2:
   version "3.1.1"
