@@ -21,10 +21,17 @@ const SubmissionMutation = graphql`
 }
 `
 
-export default function Submission() {
+interface SubmissionProps {
+  /** The name of the workflow template, i.e. numpy-benchmark */
+  workflowName: string;
+  /** The set function for a user visit */
+  setVisit: (value: undefined | Visit | ((prevState: undefined | Visit) => undefined | Visit)) => void;
+}
+
+export default function Submission({ workflowName, setVisit }: SubmissionProps) {
 
     const data = useLazyLoadQuery<SubmissionQueryType>(SubmissionQuery, {
-        name: "numpy-benchmark"
+        name: workflowName
     });
 
     const [commitMutation, isMutationInFlight] = useMutation<SubmissionMutationType>(SubmissionMutation);
@@ -32,11 +39,12 @@ export default function Submission() {
     function submitWorkflow(visit: Visit, parameters: object) {
         commitMutation({
             variables: {   
-                name: "numpy-benchmark",
+                name: workflowName,
                 visit: visit,
                 parameters: parameters
             }
         });
+        setVisit(visit);
     }
 
     return (
