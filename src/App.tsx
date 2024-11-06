@@ -1,5 +1,6 @@
 import './App.css'
 import Submission from './components/Submission';
+import Workflows from './components/Workflows';
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <h1>PtyHub</h1>
       <Submission/>
+      <Workflows/>
     </>
   )
 }

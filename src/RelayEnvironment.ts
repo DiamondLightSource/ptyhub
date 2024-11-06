@@ -9,28 +9,30 @@ import keycloak from "./keycloak";
 
 const HTTP_ENDPOINT = "https://workflows.diamond.ac.uk/graphql";
 
+const kcinit = keycloak.init({
+  onLoad: "login-required"
+})
+.then(
+  auth => {
+    if (!auth) {
+      // window.location.reload();
+    } else {
+      console.info("Authenticated");
+      console.log("auth", auth);
+      keycloak.onTokenExpired = () => {
+        console.log("token expired");
+      };
+    }
+  },
+  () => {
+    console.error("Authentication failed");
+  }
+);
+
+
 const fetchFn: FetchFunction = async (request, variables) => {
   if (!keycloak.authenticated) {
-    await keycloak
-      .init({
-        onLoad: "login-required"
-      })
-      .then(
-        auth => {
-          if (!auth) {
-            // window.location.reload();
-          } else {
-            console.info("Authenticated");
-            console.log("auth", auth);
-            keycloak.onTokenExpired = () => {
-              console.log("token expired");
-            };
-          }
-        },
-        () => {
-          console.error("Authentication failed");
-        }
-      );
+    await kcinit;
   }
 
   if (keycloak.token) {
