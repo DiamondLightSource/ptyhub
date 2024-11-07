@@ -2,6 +2,7 @@ import SubmissionForm from "./SubmissionForm";
 import { Visit } from 'workflows-lib';
 import { SubmissionQuery as SubmissionQueryType } from "./__generated__/SubmissionQuery.graphql"
 import { SubmissionMutation as SubmissionMutationType } from "./__generated__/SubmissionMutation.graphql"
+// import { WorkflowRelayFragment$data } from "./__generated__/WorkflowRelayFragment.graphql"
 import { graphql } from "relay-runtime";
 import { useLazyLoadQuery, useMutation } from 'react-relay';
 
@@ -26,6 +27,8 @@ interface SubmissionProps {
   workflowName: string;
   /** The set function for a user visit */
   setVisit: (value: undefined | Visit | ((prevState: undefined | Visit) => undefined | Visit)) => void;
+  // /** The set function for a list of workflows */
+  // setWorkflowList: (value: undefined | WorkflowRelayFragment$data | ((prevState: undefined | WorkflowRelayFragment$data) => undefined | WorkflowRelayFragment$data)) => void;
 }
 
 export default function Submission({ workflowName, setVisit }: SubmissionProps) {
